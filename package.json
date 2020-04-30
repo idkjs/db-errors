@@ -1,0 +1,26 @@
+{
+  "name": "db-errors",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "bsb -make-world -clean-world",
+    "setup": "bsb -make-world",
+    "start": "concurrently -n \"bsb,jest\" -c \"bold.white.bgMagenta,bold.black.bgYellow\" \"yarn watch:bsb\" \"yarn watch:test\"",
+    "test": "jest",
+    "watch:bsb": "bsb -make-world -w",
+    "watch:test": "jest --watchAll"
+  },
+  "keywords": [
+    "BuckleScript",
+    "Belt.Result.Error"
+  ],
+  "author": "Alain Armand",
+  "license": "MIT",
+  "devDependencies": {
+    "@glennsl/bs-jest": "^0.5.1",
+    "bs-platform": "7.3.1",
+    "concurrently": "^4.1.2"
+  },
+  "peerDependencies": {
+    "bs-platform": "7.3.1"
+  }
+}

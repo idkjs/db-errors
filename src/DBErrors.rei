@@ -1,0 +1,16 @@
+type t('string, 'error) = Failure('error) | Success('string);
+let ( @! ): ('a => 'b, 'c => 'a, 'c) => 'b;
+let andMap: (t('a, 'b), t('a => 'c, 'b)) => t('c, 'b);
+let map: ('a => 'b, t('a, 'c)) => t('b, 'c);
+let map2: (('a, 'b) => 'c, t('a, 'd), t('b, 'd)) => t('c, 'd);
+let map3: (('a, 'b, 'c) => 'd, t('a, 'e), t('b, 'e), t('c, 'e)) => t('d, 'e);
+let mapError: ('a => 'b, t('c, 'a)) => t('c, 'b);
+let mapBoth: ('a => 'b, 'c => 'd, t('a, 'c)) => t('b, 'd);
+let andThen: ('a => t('a, 'b), t('a, 'b)) => t('a, 'b);
+let withDefault: ('a, t('a, 'b)) => 'a;
+let fromResult: Belt.Result.t('a, 'b) => t('a, 'b);
+let toOption: t('a, 'b) => option('a);
+let append: (t('a, 'b), t('c, 'b)) => t(('a, 'c), 'b);
+let succeed: 'a => t('a, 'b);
+let isSuccess: t('a, 'b) => bool;
+let isFailure: t('a, 'b) => bool;
